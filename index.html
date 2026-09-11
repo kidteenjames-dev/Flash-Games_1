@@ -6,33 +6,15 @@
     <title>Flash Game Room</title>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
-        #player { width: 100%; height: 100%; }
+        ruffle-player { width: 100%; height: 100%; display: block; }
     </style>
-    <!-- Load Updated Ruffle Emulator Script -->
+    <!-- Modern automated Ruffle loader -->
     <script src="https://unpkg.com"></script>
 </head>
 <body>
-    <div id="player"></div>
-    <script>
-        // The modernized, safer way to initialize Ruffle
-        window.RufflePlayer = window.RufflePlayer || {};
-        window.RufflePlayer.config = {
-            "autoplay": "on",
-            "unmuteOverlay": "hidden"
-        };
-        
-        window.addEventListener("load", (event) => {
-            const ruffle = window.RufflePlayer.newest ? window.RufflePlayer.newest() : window.ruffle;
-            if (ruffle) {
-                const player = ruffle.createPlayer();
-                const container = document.getElementById("player");
-                container.appendChild(player);
-                // MAKE SURE THIS MATCHES YOUR FILENAME EXACTLY (CASE SENSITIVE)
-                player.load("Fireboy and Watergirl in The Forest Temple.swf"); 
-            } else {
-                console.error("Ruffle failed to initialize properly.");
-            }
-        });
-    </script>
+
+    <!-- This custom tag tells Ruffle exactly what file to run automatically -->
+    <ruffle-player swf="Fireboy and Watergirl in The Forest Temple.swf"></ruffle-player>
+
 </body>
 </html>
